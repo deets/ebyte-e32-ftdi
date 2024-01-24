@@ -1,0 +1,20 @@
+* EByte E32 FTDI Adapter
+
+Simple crate to allow driving the [[https://crates.io/crates/ebyte-e32][ebyte-32]] crate using a FTDI USB UART
+adapter, driving M0/M1 and AUX via DTR, RTS and CTS. Thus you don't
+need a Pi, but can use e.g. a Mac or Linux or most likely (not tested)
+Windows PC.
+
+** Pin Assignment
+
+|------+-----|
+| FTDI | E32 |
+|------+-----|
+| GND  | GND |
+| 3V3  | VCC |
+| CTS  | AUX |
+| TX   | RX  |
+| RX   | TX  |
+| DTR  | M0  |
+| RTS  | M1  |
+|------+-----|
