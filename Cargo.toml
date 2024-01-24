@@ -1,0 +1,12 @@
+[package]
+name = "ebyte-e32-ftdi"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serial = "0.4.0"
+serial-core = "0.4.0"
+embedded-hal = { version = "0.2.7", features = ["unproven"] }
+nb = "1.0.0"
