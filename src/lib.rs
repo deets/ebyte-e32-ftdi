@@ -1,4 +1,4 @@
-use std::{cell::RefCell, rc::Rc, thread, time::Duration};
+use std::{cell::RefCell, io::ErrorKind, rc::Rc, thread, time::Duration};
 
 use embedded_hal::{
     blocking::delay::DelayMs,
@@ -51,6 +51,10 @@ impl Read<u8> for Serial {
     fn read(&mut self) -> nb::Result<u8, Self::Error> {
         let mut result = [0];
         self.port.borrow_mut().read(&mut result)?;
+        #[cfg(feature = "null-byte-workaround")]
+        if result[0] == 0 {
+            return Err(nb::Error::Other(std::io::Error::from(ErrorKind::TimedOut)));
+        }
         Ok(result[0])
     }
 }

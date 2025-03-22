@@ -5,6 +5,12 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+# On my Linux I had an issue where all of a sudden
+# 0-Bytes came out of the serial port.
+null-byte-workaround = []
+
+
 [dependencies]
 serial = "0.4.0"
 serial-core = "0.4.0"
